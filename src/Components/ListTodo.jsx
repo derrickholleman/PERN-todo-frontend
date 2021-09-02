@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Todos from './Todos'
+import Todos from "./Todos";
 
 const ListTodo = () => {
   const [todos, setTodos] = useState([]);
@@ -8,14 +8,24 @@ const ListTodo = () => {
     const response = await fetch("http://localhost:5000/todos");
     const todoArr = await response.json();
 
-    setTodos(todoArr);
-    console.log(todoArr); /// check the response in the console
+    return {
+      todos: todoArr,
+    };
   }
 
   useEffect(() => {
     // get todos on page render
-    getTodos();
+    getTodos()
+      .then((response) => {
+        setTodos(response.todos);
+      })
+      .catch(() => {
+        console.error("unable to fetch todos");
+      });
+
   }, []);
+
+console.log(todos); // check the response in the console
 
   return (
     <div className="my-3">
@@ -31,9 +41,9 @@ const ListTodo = () => {
         </thead>
         <tbody>
           {todos.map((todo) => (
-              <Todos 
-              key={todo.todo_id}
-              todo={todo}/>
+            <Todos 
+            key={todo.todo_id} 
+            todo={todo} />
           ))}
         </tbody>
       </table>

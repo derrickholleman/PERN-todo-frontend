@@ -3,14 +3,14 @@ import React, { useState } from "react";
 const InputTodo = () => {
   const [description, setDescription] = useState("");
 
-  const submitForm = async e => {
+  const submitForm = async (e) => {
       // e.preventDefault();  prevent refresh on submit
 
       try {
           const body = {description}
           await fetch('http://localhost:5000/todos', {
               method: 'POST',
-              headers: { 'Content-type': 'application/json'},
+              headers: {'Content-type': 'application/json'},
               body: JSON.stringify(body)
           })
 
