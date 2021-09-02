@@ -4,7 +4,7 @@ const InputTodo = () => {
   const [description, setDescription] = useState("");
 
   const submitForm = async e => {
-      e.preventDefault(); // prevent refresh on submit
+      // e.preventDefault();  prevent refresh on submit
 
       try {
           const body = {description}
