@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import EditTodo from "./EditTodo";
+import Todos from "./Todos";
 
 const ListTodo = () => {
   const [todos, setTodos] = useState([]);
@@ -24,18 +24,6 @@ const ListTodo = () => {
       });
   }, []);
 
-  async function deleteTodo(id) {
-    try {
-      await fetch(`http://localhost:5000/todos/${id}`, {
-        method: "DELETE",
-      });
-      // filter state to return all id's that doesn't equal id that was clicked
-      setTodos(todos.filter((todo) => todo.todo_id !== id));
-    } catch (err) {
-      console.error(err.message);
-    }
-  }
-
   console.log(todos); // check the response in the console
 
   return (
@@ -53,20 +41,12 @@ const ListTodo = () => {
 
         <tbody>
           {todos.map((todo) => (
-            <tr key={todo.todo_id}>
-              <td>{todo.description}</td>
-              <td>
-                <EditTodo todo={todo} />
-              </td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => deleteTodo(todo.todo_id)}
-                >
-                  DELETE
-                </button>
-              </td>
-            </tr>
+            <Todos 
+            key={todo.todo_id}
+            todo={todo}
+            // passing state and whole todos array to child component
+            setTodos={setTodos}
+            allTodos={todos}/>
           ))}
         </tbody>
       </table>
