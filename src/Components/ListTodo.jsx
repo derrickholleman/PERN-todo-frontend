@@ -4,8 +4,8 @@ import Todos from "./Todos";
 const ListTodo = () => {
   const [todos, setTodos] = useState([]);
 
+  // callback function so you don't pass useState directly as props
   function setTodosCallback(data) {
-    // callback function so you don't pass useState directly as props
     setTodos(data)
   }
 
