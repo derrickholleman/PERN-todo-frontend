@@ -19,6 +19,7 @@ const Todos = ({ todo, setTodos, allTodos }) => {
     <Fragment>
       <tr>
         <td>{todo.description}</td>
+        <td>{todo.importance}</td>
         <td>
           <EditTodo todo={todo} />
         </td>

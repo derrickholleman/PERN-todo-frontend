@@ -12,6 +12,14 @@
 .btn:active {
   transform: scale(.98);
 }
+.btn-success {
+  margin: .5rem 0;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
 
 /* bootstrap table resets */
 .table>:not(caption)>*>* {

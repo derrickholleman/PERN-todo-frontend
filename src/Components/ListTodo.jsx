@@ -39,6 +39,7 @@ const ListTodo = () => {
         <thead>
           <tr>
             <th>Description</th>
+            <th>Importance Level</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>

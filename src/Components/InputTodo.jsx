@@ -2,12 +2,13 @@ import React, { useState } from "react";
 
 const InputTodo = () => {
   const [description, setDescription] = useState("");
+  const [importance, setImportance] = useState('');
 
   const submitForm = async (e) => {
       // e.preventDefault();  prevent refresh on submit
 
       try {
-          const body = {description}
+          const body = {description, importance}
           await fetch('http://localhost:5000/todos', {
               method: 'POST',
               headers: {'Content-type': 'application/json'},
@@ -23,13 +24,20 @@ const InputTodo = () => {
     <div>
       <h1 className="my-3">Input Todo</h1>
 
-      <form className="d-flex" onSubmit={submitForm}>
+      <form onSubmit={submitForm}>
         <input
           type="text"
           placeholder="add todo"
           className="form-control"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="add importance level 1-10"
+          className="form-control"
+          value={importance}
+          onChange={(e) => setImportance(e.target.value)}
         />
 
         <button className="btn btn-success" disabled={description.length === 0}>ADD</button>

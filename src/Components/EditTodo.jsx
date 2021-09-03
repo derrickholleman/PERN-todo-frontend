@@ -2,10 +2,16 @@ import React, { Fragment, useState } from "react";
 
 const EditTodo = ({ todo }) => {
   const [description, setDescription] = useState(todo.description);
+  const [importance, setImportance] = useState(todo.importance);
+
+  const resetValues = () => {
+    setDescription(todo.description)
+    setImportance(todo.importance)
+  }
 
   const editText = async (id) => {
     try {
-      const body = { description };
+      const body = { description, importance };
 
       await fetch(`http://localhost:5000/todos/${id}`, {
         method: "PUT",
@@ -31,12 +37,12 @@ const EditTodo = ({ todo }) => {
         Edit
       </button>
 
-      <div className="modal" id={`id${todo.todo_id}`} onClick={() => setDescription(todo.description)}>
+      <div className="modal" id={`id${todo.todo_id}`}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
               <h4 className="modal-title">Edit Todo</h4>
-              <button type="button" className="close" data-dismiss="modal" onClick={() => setDescription(todo.description)}>
+              <button type="button" className="close" data-dismiss="modal" onClick={() => resetValues()}>
                 &times;
               </button>
             </div>
@@ -47,6 +53,12 @@ const EditTodo = ({ todo }) => {
                 className="form-control"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+              />
+              <input
+                type="text"
+                className="form-control"
+                value={importance}
+                onChange={(e) => setImportance(e.target.value)}
               />
             </div>
 
@@ -59,7 +71,7 @@ const EditTodo = ({ todo }) => {
               >
                 Save Edit
               </button>
-              <button type="button" className="btn btn-danger" data-dismiss="modal" onClick={() => setDescription(todo.description)}>
+              <button type="button" className="btn btn-danger" data-dismiss="modal" onClick={() => resetValues()}>
                 Close
               </button>
             </div>
