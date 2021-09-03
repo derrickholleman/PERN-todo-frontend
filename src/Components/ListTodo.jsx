@@ -4,6 +4,11 @@ import Todos from "./Todos";
 const ListTodo = () => {
   const [todos, setTodos] = useState([]);
 
+  function setTodosCallback(data) {
+    // callback function so you don't pass useState directly as props
+    setTodos(data)
+  }
+
   async function getTodos() {
     const response = await fetch("http://localhost:5000/todos");
     const todoArr = await response.json();
@@ -45,7 +50,7 @@ const ListTodo = () => {
             key={todo.todo_id}
             todo={todo}
             // passing state and whole todos array to child component
-            setTodos={setTodos}
+            setTodos={setTodosCallback}
             allTodos={todos}/>
           ))}
         </tbody>
