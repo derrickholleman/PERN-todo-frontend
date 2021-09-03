@@ -1,6 +1,5 @@
 import './App.css';
 import InputTodo from './Components/InputTodo';
-import EditTodo from './Components/EditTodo'
 import ListTodo from './Components/ListTodo'
 
 function App() {

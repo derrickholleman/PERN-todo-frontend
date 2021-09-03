@@ -9,6 +9,14 @@
   margin: 0 1rem;
   padding: .5rem 1.25rem;
 }
-.btn-success:active {
+.btn:active {
   transform: scale(.98);
+}
+
+/* bootstrap table resets */
+.table>:not(caption)>*>* {
+  border-bottom-width: 0px;
+}
+.table>tbody {
+  vertical-align: 0;
 }
