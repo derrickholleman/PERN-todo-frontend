@@ -10,11 +10,11 @@ const ListTodo = () => {
   }
 
   async function getTodos() {
-    const response = await fetch("http://localhost:5000/todos");
-    const todoArr = await response.json();
+    const todoResponse = await fetch("http://localhost:5000/todos");
+    const todoJSON = await todoResponse.json();
 
     return {
-      todos: todoArr,
+      todos: todoJSON,
     };
   }
 
