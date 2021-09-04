@@ -55,9 +55,11 @@ const EditTodo = ({ todo }) => {
                 onChange={(e) => setDescription(e.target.value)}
               />
               <input
-                type="text"
+                type="number"
+                min="1" 
+                max="10"
                 className="form-control"
-                value={importance}
+                value={importance || ''}
                 onChange={(e) => setImportance(e.target.value)}
               />
             </div>

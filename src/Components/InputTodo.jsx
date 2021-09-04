@@ -33,7 +33,9 @@ const InputTodo = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
         <input
-          type="text"
+          type="number"
+          min="1" 
+          max="10"
           placeholder="add importance level 1-10"
           className="form-control"
           value={importance}
