@@ -59,7 +59,8 @@ const EditTodo = ({ todo }) => {
                 min="1" 
                 max="10"
                 className="form-control"
-                value={importance || ''}
+                // parseint needed to display because it's stored as a CHAR in the Database
+                value={parseInt(importance) || ''}
                 onChange={(e) => setImportance(e.target.value)}
               />
             </div>
